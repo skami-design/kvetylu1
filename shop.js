@@ -5,7 +5,7 @@
    ===================================================================== */
 
 const KL = {
-  HOME: "kvety-lu.html",
+  HOME: "index.html",
   EMAIL: 'kvetylu@centrum.cz',
   // Adresa serverové funkce, která odešle poptávku e-mailem (Vercel funkce).
   // Dokud je null, poptávka se otevře jako předvyplněný e-mail.
