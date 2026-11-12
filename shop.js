@@ -19,8 +19,8 @@ const KL = {
     "name": "Vesničky",
     "slug": "vesnicky",
     "g": "g1",
-    "short": "Malé vesničky z ručně malovaných domečků, často se světýlky.",
-    "intro": "Vesničky skládám z malých domečků, z nichž je každý trochu jiný. Postavíte je na poličku, parapet nebo na stůl."
+    "short": "Vesničky z ručně malovaných domečků, i velké až 50 cm, často se světýlky.",
+    "intro": "Vesničky skládám z ručně malovaných domečků, z nichž je každý trochu jiný. Najdete tu menší kousky na poličku i velké vesničky o délce až 50 cm. Postavíte je na parapet, komodu nebo na stůl."
   },
   {
     "name": "Domečky",
