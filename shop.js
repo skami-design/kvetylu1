@@ -233,7 +233,6 @@ function photoHTML(p, big) {
   const g = c ? c.g : 'g1';
   let html = '<div class="pphoto ' + g + (big ? ' big' : '') + '"><span class="pph-label">FOTO</span>';
   if (p.photos > 0) html += '<img src="' + photoUrl(p, 1) + '" alt="' + esc(p.name) + '" loading="lazy" onerror="this.remove()">';
-  if (typeof PLACEHOLDERY !== 'undefined' && PLACEHOLDERY && p.placeholder) html += '<span class="pbadge">Ukázka</span>';
   return html + '</div>';
 }
 
@@ -312,14 +311,14 @@ function openModal(id) {
       '<h2 id="pmTitle">' + esc(p.name) + '</h2>' +
       '<div class="pm-price">' + (price ? price : 'Cena dle domluvy') + '</div>' +
       (p.tags && p.tags.length ? '<div class="ptags">' + p.tags.map(t => '<a href="kategorie.html?k=vse&stitek=' + encodeURIComponent(t) + '">' + esc(t) + '</a>').join('') + '</div>' : '') +
-      (typeof PLACEHOLDERY !== 'undefined' && PLACEHOLDERY && p.placeholder ? '<p class="pm-demo">Ukázkový produkt – fotky a texty doplním.</p>' : '') +
+      '<p class="pm-note">Fotografie jsou vzorové. Většina výrobků je originál, proto rozmístění drobných detailů i domečků nemusí přesně odpovídat.</p>' +
       (p.long ? '<p class="plong">' + esc(p.long) + '</p>' : '') +
       (specs.length ? '<dl class="specs">' + specs.join('') + '</dl>' : '') +
       (hasVar ? '<label class="pm-label" for="pmVar">Varianta</label><select id="pmVar">' + p.variants.map(v => '<option>' + esc(v) + '</option>').join('') + '</select>' : '') +
       '<label class="pm-label" for="pmQty">Počet kusů</label>' +
       '<div class="qty-step"><button type="button" id="pmMinus" aria-label="Ubrat kus">−</button><input id="pmQty" type="number" min="1" max="99" value="1" inputmode="numeric"><button type="button" id="pmPlus" aria-label="Přidat kus">+</button></div>' +
       '<button type="button" class="btn btn-primary pm-add" id="pmAdd">Přidat do poptávky</button>' +
-      '<p class="pm-hint script">Každý kousek vyrábím ručně – klidně napište, co byste chtěli upravit.</p>' +
+      '<p class="pm-hint script">Každý kousek vyrábím ručně, úpravy a přání jsou na domluvě.</p>' +
     '</div></div>';
 
   el.classList.add('open'); document.body.classList.add('no-scroll');
@@ -489,7 +488,7 @@ function initHome() {
 function initCategory() {
   const head = $('#catHead'); if (!head || document.body.dataset.page !== 'category') return;
   const slug = new URLSearchParams(location.search).get('k');
-  const cat = slug === 'vse' ? { name: 'Všechny produkty', slug: 'vse', intro: 'Všechno z mé dílny na jednom místě. Vyberte si podle období nebo stylu – třeba Vánoce, Provence nebo Vhodné jako dárek.' } : KL.CATS.find(c => c.slug === slug);
+  const cat = slug === 'vse' ? { name: 'Kompletní nabídka', slug: 'vse', intro: 'Všechno z mé dílny na jednom místě. Vyberte si podle období nebo stylu – třeba Vánoce, Provence nebo Vhodné jako dárek.' } : KL.CATS.find(c => c.slug === slug);
   const grid = $('#pGrid'), filt = $('#pFilters'), count = $('#pCount');
 
   if (!cat) {
@@ -585,4 +584,32 @@ refreshCardButtons();
   }
   addEventListener('resize', resize);
   resize(); requestAnimationFrame(tick);
+})();
+
+
+/* ---------- Typografie: nezalamovat jednopísmenné předložky a čísla s jednotkou ---------- */
+(function nbspFix(){
+  const NB = '\u00a0';
+  const re1 = /(?<![^\s(„"“>])([KkSsVvZzOoUuAaIi]) /g;
+  const re2 = /(\d) (Kč|cm|mm|kg|dní|dnů|dne|ks|min|%)(?![\wáčďéěíňóřšťúůýž])/g;
+  function fix(root){
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(n){
+        const p = n.parentNode && n.parentNode.nodeName;
+        return /^(SCRIPT|STYLE|TEXTAREA|OPTION)$/.test(p) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = []; while (w.nextNode()) nodes.push(w.currentNode);
+    nodes.forEach(n => {
+      const v = n.nodeValue; if (!v || v.length < 3) return;
+      const r = v.replace(re1, '$1' + NB).replace(re1, '$1' + NB).replace(re2, '$1' + NB + '$2');
+      if (r !== v) n.nodeValue = r;
+    });
+  }
+  let busy = false;
+  function run(){ if (busy) return; busy = true; requestAnimationFrame(() => { fix(document.body); busy = false; }); }
+  document.addEventListener('DOMContentLoaded', () => {
+    fix(document.body);
+    new MutationObserver(run).observe(document.body, { childList: true, subtree: true });
+  });
 })();

@@ -789,6 +789,32 @@
 
 /* Dlaždice kategorií s hotovým obrázkem (nadpis + ilustrace + text) */
 .cat-tile .tile-img{ display:none; }
-.cat-tile.has-img{ background:#fff !important; padding:0; min-height:0; gap:0; overflow:hidden; border:1px solid rgba(54,57,50,.10); }
+.cat-tile.has-img{ background:transparent !important; padding:0; min-height:0; gap:0; overflow:visible; border:0; box-shadow:none !important; }
+.cat-tile.has-img:hover{ transform: translateY(-4px); box-shadow:none !important; }
+.cat-tile.has-img:hover .tile-img{ filter: drop-shadow(0 8px 14px rgba(54,57,50,.16)); }
+.cat-tile .tile-img{ transition: filter .25s ease; }
 .cat-tile.has-img .tile-img{ display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:contain; }
 .cat-tile.has-img .tile-txt, .cat-tile.has-img .tile-go{ display:none; }
+
+.pm-note{ font-size:14px; line-height:1.5; color: var(--ink-soft); background: var(--cream-deep); border-radius:8px; padding:10px 14px; margin:0; }
+.grid-note{ font-size:14px; color: var(--ink-soft); text-align:center; margin:22px auto 0; max-width:60ch; }
+
+.usp-item{ cursor:default; }
+.usp-item:hover img{ transform:none; }
+.usp{ margin-top:0; }
+
+/* O nás */
+main.story{ padding:64px 0 96px; }
+.story-grid{ display:grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); gap:56px; align-items:start; }
+.story-text .eyebrow{ margin-bottom:12px; }
+.story-text h1{ font-size: clamp(32px,4vw,46px); margin-bottom:28px; line-height:1.15; }
+.story-text p{ font-size:18px; line-height:1.7; color: var(--ink-soft); margin-bottom:18px; max-width:62ch; }
+.story-text p.lead{ font-family:'Fraunces',serif; font-size:23px; line-height:1.5; color: var(--ink); }
+.story-text .btn{ margin-top:14px; }
+.story-photo{ margin:0; position:sticky; top:100px; }
+.story-photo img{ width:100%; height:auto; border-radius:11px; box-shadow:0 10px 26px rgba(54,57,50,.14); }
+@media (max-width:860px){ .story-grid{ grid-template-columns:1fr; gap:32px; } .story-photo{ position:static; order:-1; } main.story{ padding:36px 0 64px; } }
+
+.rev-photo{ aspect-ratio:1/1; max-height:360px; width:100%; background:var(--cream-deep); }
+.rev-photo img{ object-fit:contain; }
+@media (max-width:700px){ .rev-photo{ aspect-ratio:1/1; max-height:none; } }
