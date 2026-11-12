@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Květy Lu — Ručně tvořené dřevěné dekorace</title>
+<meta name="description" content="Ručně tvořené dřevěné dekorace a domečky z dílny Květy Lu. Vyberte si a pošlete nezávaznou poptávku.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Květy Lu">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:title" content="Květy Lu — Ručně tvořené dřevěné dekorace">
+<meta property="og:description" content="Ručně tvořené dřevěné dekorace a domečky z dílny Květy Lu. Vyberte si a pošlete nezávaznou poptávku.">
+<meta property="og:image" content="https://kvetylu.cz/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Caveat:wght@500;600;700&family=Karla:wght@400;500;600;700&family=Kaushan+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+
+<header>
+  <div class="nav">
+    <a href="kvety-lu.html" class="logo">
+      <img src="assets/logo.png" alt="">
+      Květy Lu
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Hlavní menu">
+      <a href="kvety-lu.html#domov">Domů</a>
+      <a href="kvety-lu.html#kategorie">Kolekce</a>
+      <a href="kvety-lu.html#pribeh">Příběh</a>
+      <a href="kvety-lu.html#objednat">Jak objednat</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="nav-right">
+      <button class="cart-btn search-btn" id="searchBtn" aria-label="Hledat produkt" aria-expanded="false" aria-controls="searchBar">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <span class="cart-label search-label">Hledat</span>
+      </button>
+      <button class="cart-btn" id="cartBtn" aria-label="Moje poptávka">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 4h2l2.4 12.4a2 2 0 002 1.6h8.2a2 2 0 002-1.6L21 8H6"/><circle cx="10" cy="20" r="1.4" fill="currentColor" stroke="none"/><circle cx="17" cy="20" r="1.4" fill="currentColor" stroke="none"/></svg>
+        <span class="cart-label">Poptávka</span>
+        <span class="cart-count" id="cartCount" data-empty="true">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="searchbar" id="searchBar" hidden>
+    <form action="hledani.html" method="get" role="search">
+      <label for="q" class="sr">Hledat produkt</label>
+      <input id="q" name="q" type="search" placeholder="Co hledáte? Např. věnec, zápich, vánoční…" autocomplete="off">
+      <button type="submit" class="btn btn-primary">Hledat</button>
+    </form>
+  </div>
+</header>
+
+<section class="hero" id="domov">
+  <div class="hero-banner">
+    <picture>
+      <source media="(max-width: 700px)" srcset="assets/hero-banner-mobile.png">
+      <img src="assets/hero-banner.png" alt="Květy Lu — Od třísky až po domeček. Ručně tvořené dřevěné dekorace.">
+    </picture>
+    <a href="#kategorie" class="btn btn-primary hero-cta">Prohlédnout kolekci
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<section class="usp">
+  <div class="wrap usp-row">
+    <div class="usp-item">
+      <img src="assets/usp-1.png" alt="Tvořeno s láskou">
+      <span>Tvořeno s láskou</span>
+    </div>
+    <div class="usp-item">
+      <img src="assets/usp-2.png" alt="Každý je originál">
+      <span>Každý je originál</span>
+    </div>
+    <div class="usp-item">
+      <img src="assets/usp-3.png" alt="Podle vašich přání">
+      <span>Podle vašich přání</span>
+    </div>
+    <div class="usp-item">
+      <img src="assets/usp-4.png" alt="Kouzlo přírodního dřeva">
+      <span>Kouzlo přírodního dřeva</span>
+    </div>
+    <div class="usp-item">
+      <img src="assets/usp-5.png" alt="Malá radost v balíčku">
+      <span>Malá radost v balíčku</span>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="categories" id="kategorie">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">KOLEKCE</div>
+      <h2>Vyberte si, co hledáte</h2>
+      <p>Klikněte na kategorii a prohlédněte si všechny kousky.</p>
+    </div>
+    <div class="cat-tiles">
+      <a href="kategorie.html?k=vesnicky" class="cat-tile g1">
+        <span><h3>Vesničky</h3><p>Malé vesničky z ručně malovaných domečků, často se světýlky.</p></span>
+        <span class="tile-go">Zobrazit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="kategorie.html?k=domecky" class="cat-tile g2">
+        <span><h3>Domečky</h3><p>Samostatné domečky, chaloupky a domečky pod sklem.</p></span>
+        <span class="tile-go">Zobrazit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="kategorie.html?k=vence" class="cat-tile g3">
+        <span><h3>Věnce</h3><p>Věnce s domečky a květinami na dveře i na stůl.</p></span>
+        <span class="tile-go">Zobrazit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="kategorie.html?k=do-zahrady" class="cat-tile g4">
+        <span><h3>Do zahrady</h3><p>Truhlíky a zápichy, které oživí zahradu, terasu i balkon.</p></span>
+        <span class="tile-go">Zobrazit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="kategorie.html?k=svicny-a-dekorace" class="cat-tile g5">
+        <span><h3>Svícny a dekorace</h3><p>Svícny, ozdoby a dekorace na každé roční období.</p></span>
+        <span class="tile-go">Zobrazit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="kategorie.html?k=drobnosti-pro-radost" class="cat-tile g6">
+        <span><h3>Drobnosti pro radost</h3><p>Dřevěná srdce, levandulové pytlíčky a malé dárky.</p></span>
+        <span class="tile-go">Zobrazit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="kategorie.html?k=vanoce" class="cat-tile g7">
+        <span><h3>Vánoční nabídka</h3><p>Vše, co přinese vánoční atmosféru.</p></span>
+        <span class="tile-go">Zobrazit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+    <div class="tag-links" id="tagLinks" hidden></div>
+  </div>
+</section>
+
+<section class="collections" id="vybrane">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" id="fEyebrow">VYBRANÉ KOUSKY</div>
+      <h2 id="fTitle">Domečky, které mají duši</h2>
+      <p id="fText">Ochutnávka z mé tvorby. Kliknutím na kartu uvidíte víc fotek a podrobnosti.</p>
+    </div>
+    <div class="pgrid" id="featuredGrid"></div>
+    <div class="more-wrap"><a class="btn btn-outline" id="fMore" href="kategorie.html?k=vse">Zobrazit další produkty <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<section class="about" id="pribeh">
+  <div class="about-banner">
+    <picture><source media="(max-width: 700px)" srcset="assets/about-banner-mobile.jpg"><img src="assets/about-banner.png" alt="Lucie z Květy Lu ve své dílně se svým domečkem v rukou. Vítejte v mé dílně."></picture>
+    <a href="o-mne.html" class="btn btn-primary about-cta">Přečíst můj příběh
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+  <div class="about-text-m">
+    <h2>Malá vesnička velkých příběhů</h2>
+    <p>Jmenuji se Lucie a pod značkou Květy Lu tvořím dřevěné domečky a dekorace, které přinášejí radost, klid a kousek přírody domů.</p>
+    <p>Každý domeček je originál – vzniká ručně, z pečlivě vybraného dřeva, a nese v sobě kus toho, co mám ráda: dřevo, květiny a klid domova.</p>
+    <a href="o-mne.html" class="btn btn-primary">Přečíst můj příběh <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="process-head">
+      <h2>Od kousku dřeva<br>k domečku</h2>
+      <p>Každý domeček prochází ručním zpracováním od prvního řezu až po poslední detail.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-photo"><img src="assets/proces/proces-1.jpg" alt="Hromádka přírodních dřevěných prkének" loading="lazy"></div>
+        <h3>Zrod</h3><p>Pečlivě vybírám dřevo a tvaruji základ.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-photo"><img src="assets/proces/proces-2.jpg" alt="Malování detailů na domečky položené na dřevěném srdci" loading="lazy"></div>
+        <h3>Tvoření</h3><p>Každý domeček dostává svou vlastní tvář.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-photo"><img src="assets/proces/proces-3.jpg" alt="Hotové dřevěné srdce s trojicí domečků a jutovou mašlí" loading="lazy"></div>
+        <h3>Domy</h3><p>Vždy jiný, vždy jedinečný.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-photo">Balení zásilky</div>
+        <h3>K vám</h3><p>Balím s láskou, aby dorazil v pořádku.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="reviews" id="recenze">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">ZÁKAZNICE O MNĚ</div>
+      <h2>Co říkají ti, kterým domečky zdobí domov</h2>
+    </div>
+    <div class="rev-slider" role="region" aria-roledescription="carousel" aria-label="Recenze zákaznic">
+      <div class="rev-track" id="revTrack" tabindex="0">
+      <figure class="rev-slide" role="group" aria-roledescription="recenze" aria-label="1 z 6"><div class="rev-photo"><img src="assets/recenze/iva.jpg" alt="Velikonoční dekorace od Květy Lu" loading="lazy"></div><div class="rev-body"><blockquote><p>Obdivuji tu jemnou práci a vytrvalost, se kterou tvoří a maluje všechny ty domečky, kombinace květin na věnce a jiné dekorace, které vyrábí. Lucky tvorbu moc doporučuji. Určitě udělá radost a rozzáří každému jeho domov.</p></blockquote><figcaption>Iva</figcaption></div></figure>
+      <figure class="rev-slide" role="group" aria-roledescription="recenze" aria-label="2 z 6"><div class="rev-photo"><img src="assets/recenze/sarka.jpg" alt="Truhlík s domečky na šicím stroji" loading="lazy"></div><div class="rev-body"><blockquote><p>Zakoupila jsem si od Lucky Baierové velký truhlík na květiny s motivem domečků. Již v nabídce se mi velmi líbil. […] Kdykoliv jsem vyhlédla z okna jídelny, těšila jsem se z hezkého pohledu. […] Děkuji, Lucko, a těším se na další výrobky.</p></blockquote><figcaption>Šárka</figcaption></div></figure>
+      <figure class="rev-slide" role="group" aria-roledescription="recenze" aria-label="3 z 6"><div class="rev-photo"><img src="assets/recenze/martina.jpg" alt="Tři domečky s vřesem" loading="lazy"></div><div class="rev-body"><blockquote><p>S výrobky od Květy Lu jsem moc spokojená. Každý kousek je originální, krásný, praktický a je v něm cítit péče, se kterou je Lucka připravuje. Skvěle se hodí jako dárek i jako dekorace do domu nebo zahrady.</p></blockquote><figcaption>Martina K.</figcaption></div></figure>
+      <figure class="rev-slide" role="group" aria-roledescription="recenze" aria-label="4 z 6"><div class="rev-photo"><img src="assets/recenze/jaja.jpg" alt="Svítící vesnička" loading="lazy"></div><div class="rev-body"><blockquote><p>Květy Lu jsou moje srdeční záležitost. V každém ročním období nabízí nádherné výrobky, které danou dobu úžasně vystihují. Vždy pohladí duši.</p></blockquote><figcaption>Jaja</figcaption></div></figure>
+      <figure class="rev-slide" role="group" aria-roledescription="recenze" aria-label="5 z 6"><div class="rev-photo"><img src="assets/recenze/eva.jpg" alt="Domeček pod sklem se světýlky" loading="lazy"></div><div class="rev-body"><blockquote><p>Domeček pod sklem jsem dostala jako dárek. Tak se líbil mým dcerám, že jsem ho musela objednat pro každou z nich.</p></blockquote><figcaption>Eva</figcaption></div></figure>
+      <figure class="rev-slide" role="group" aria-roledescription="recenze" aria-label="6 z 6"><div class="rev-photo"><img src="assets/recenze/mirka.jpg" alt="Podzimní dekorace s domečkem" loading="lazy"></div><div class="rev-body"><blockquote><p>Včera večer jsem si vyzvedla balíček a mám z něj velkou radost. Moc děkuji i za milý dárek, malé domečky, které jsou fakt roztomilé.</p></blockquote><figcaption>Mirka J.</figcaption></div></figure>
+      </div>
+      <div class="rev-ctrl">
+        <button class="rev-arrow" id="revPrev" type="button" aria-label="Předchozí recenze"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <div class="rev-dots" id="revDots"></div>
+        <button class="rev-arrow" id="revNext" type="button" aria-label="Další recenze"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="objednat">
+  <div class="wrap order-inner">
+    <div class="order-text">
+      <div class="eyebrow">JAK OBJEDNAT</div>
+      <h2>Vyberte si domeček, který k vám promlouvá</h2>
+      <p>Žádný web není potřeba znát nazpaměť — stačí napsat. Ráda vám pomůžu vybrat i poradit s výběrem na míru.</p>
+      <div class="order-steps">
+        <div class="order-step"><div class="n">1</div><p>Prohlédněte si kolekci a vyberte domeček, který se vám líbí — nebo napište, co máte na mysli.</p></div>
+        <div class="order-step"><div class="n">2</div><p>Napište mi přes formulář, e-mail nebo Instagram.</p></div>
+        <div class="order-step"><div class="n">3</div><p>Domluvíme detaily, termín a cenu na míru.</p></div>
+        <div class="order-step"><div class="n">4</div><p>Vyrobím a bezpečně zabalím — domeček dorazí přímo k vám.</p></div>
+      </div>
+    </div>
+    <div class="form-card">
+      <h3>Vaše poptávka</h3>
+      <p id="formIntro">Vyberte, co se vám líbí, a klikněte na „Do poptávky“. Pak tu vyplníte pár údajů a poptávku odešlete – nic se neplatí.</p>
+      <div id="miniCartList"></div>
+      <button type="button" class="btn btn-primary" id="openCartFromForm" style="margin-top:8px;">Otevřít poptávku
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h2l2.4 12.4a2 2 0 002 1.6h8.2a2 2 0 002-1.6L21 8H6"/><circle cx="10" cy="20" r="1.4" fill="currentColor" stroke="none"/><circle cx="17" cy="20" r="1.4" fill="currentColor" stroke="none"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="found">
+  <div class="wrap found-grid">
+    <div class="found-photo"><img src="assets/stanek.jpg" alt="Lucie na svém prodejním stánku mezi dřevěnými domečky a věnci" loading="lazy"></div>
+    <div class="found-side">
+      <div class="found-box b1">
+        <img class="ig-mock" src="assets/instagram-nahled.png" alt="Náhled profilu Květy Lu na Instagramu" onerror="this.remove()">
+        <div class="b1-text">
+          <h3>Moje dílna na Instagramu</h3>
+          <p>Fotky, videa a novinky z mé tvorby najdete na profilu @kvety_lu.</p>
+        <a href="https://www.instagram.com/kvety_lu?stkn=aHhkcTd0anBrYmN1" target="_blank" rel="noopener" class="btn btn-outline" style="align-self:flex-start;">Sledovat na Instagramu
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        </div>
+      </div>
+      <div class="found-box b2">
+        <div>
+          <h3>Kde mě potkáte</h3>
+          <ul class="trhy"><li><b>15. 11.</b> Flermarket Kolín</li><li><b>22. 11.</b> Flermarket Hradec Králové</li><li><b>28.–29. 11.</b> Vánoční trhy na zámku Sychrov</li><li><b>13. 12.</b> Dubánky (u Pardubic)</li></ul>
+          <p class="trhy-note">Další termíny přidávám na Instagramu @kvety_lu.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer id="kontakt">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div class="footer-brand">
+        <a href="kvety-lu.html" class="logo footer-logo-text">
+          Květy Lu
+        </a>
+        <p>Domečky do bytu i zahrady. Dekorace ze dřeva i květin. S láskou k přírodě.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 6l9 7 9-7"/></svg>
+            <a href="mailto:kvetylu@centrum.cz">kvetylu@centrum.cz</a>
+          </li>
+          <li class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:+420774179228">774 179 228</a>
+          </li>
+          <li class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 8h2V4h-2a4 4 0 00-4 4v3H9v4h2v7h4v-7h3l1-4h-4V8a1 1 0 011-1z"/></svg>
+            <a href="https://www.facebook.com/share/1JB6pxT9LH/" target="_blank" rel="noopener">Facebook Květy Lu</a>
+          </li>
+          <li class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+            <a href="https://www.instagram.com/kvety_lu?stkn=aHhkcTd0anBrYmN1" target="_blank" rel="noopener">kvety_lu</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Informace pro vás</h4>
+        <ul>
+          <li><a href="kvety-lu.html#pribeh">O mně</a></li>
+          <li><a href="kvety-lu.html#objednat">Jak objednat</a></li>
+          <li><a href="doprava-baleni.html">Doprava a balení</a></li>
+          <li><a href="vop.html">Obchodní podmínky</a></li>
+          <li><a href="gdpr.html">Ochrana osobních údajů</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kategorie</h4>
+        <ul>
+          <li><a href="kategorie.html?k=vse">Všechny produkty</a></li>
+          <li><a href="kategorie.html?k=vesnicky">Vesničky</a></li>
+          <li><a href="kategorie.html?k=domecky">Domečky</a></li>
+          <li><a href="kategorie.html?k=vence">Věnce</a></li>
+          <li><a href="kategorie.html?k=do-zahrady">Do zahrady</a></li>
+          <li><a href="kategorie.html?k=svicny-a-dekorace">Svícny a dekorace</a></li>
+          <li><a href="kategorie.html?k=drobnosti-pro-radost">Drobnosti pro radost</a></li>
+          <li><a href="kategorie.html?k=vanoce">Vánoční nabídka</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Květy Lu, Lucie Baierová. IČO: 74889532. Všechna práva vyhrazena.</span>
+      <span class="script" style="font-size:20px; color:var(--sage-deep);">Děkuji, že jste tady</span>
+    </div>
+  </div>
+</footer>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-panel" id="cartPanel" aria-label="Moje poptávka" aria-hidden="true">
+  <div class="cart-head">
+    <h3>Moje poptávka</h3>
+    <button class="cart-close" id="cartClose" aria-label="Zavřít poptávku">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="cart-body">
+    <div class="cart-empty" id="cartEmptyMsg">Zatím jste nic nepřidali. Vyberte si něco v sekci Kolekce a klikněte na „Do poptávky“.</div>
+    <div id="cartItems"></div>
+    <div class="cart-result" id="cartResult" aria-live="polite"></div>
+
+    <form class="inquiry-form" id="inquiryForm">
+      <div class="field">
+        <label for="cJmeno">Jméno</label>
+        <input id="cJmeno" type="text" placeholder="Vaše jméno" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="cEmail">E-mail</label>
+        <input id="cEmail" type="email" placeholder="vas@email.cz" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="cZprava">Poznámka (nepovinné)</label>
+        <textarea id="cZprava" placeholder="Např. termín, barevné provedení, na co se ptáte..."></textarea>
+      </div>
+      <div class="field" style="display:flex; align-items:flex-start; gap:10px;">
+        <input id="cGdpr" type="checkbox" required style="width:22px; height:22px; margin-top:3px; flex-shrink:0;">
+        <label for="cGdpr" style="font-weight:400; font-size:16px; line-height:1.5;">
+          Souhlasím se zpracováním osobních údajů dle
+          <a href="gdpr.html" target="_blank" style="color:var(--sage-deep); text-decoration:underline;">zásad ochrany osobních údajů</a>.
+        </label>
+      </div>
+    </form>
+  </div>
+  <div class="cart-foot">
+    <p id="cartFootNote">Vyberte, co se vám líbí, a pak odešlete poptávku. Nic se tím neplatí ani nezavazuje.</p>
+    <button class="btn btn-primary" id="sendInquiry" disabled>Odeslat poptávku
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</aside>
+
+<script src="products.js"></script>
+<script src="shop.js"></script>
+
+</body>
+</html>
