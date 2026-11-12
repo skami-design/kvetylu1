@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /kvety-lu-brzy.html
+
+Sitemap: https://kvetylu.cz/sitemap.xml

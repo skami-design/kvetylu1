@@ -1,3 +1,8 @@
+const CANDLE_IDS = [4, 13, 16, 17];
+const CANDLE_WARN = '<div class="pm-warn"><strong>⚠ Varování: hořící svíčky</strong><ul>' +
+  ['Nenechávejte hořící svíčky bez dozoru.', 'Udržujte mimo dosah dětí a domácích zvířat.', 'Udržujte mimo hořlavé materiály. Dekorace obsahuje dřevo, umělý sníh a drobné ozdoby.', 'Svíčky umístěte na stabilní, nehořlavý podklad.', 'Svíčky nepřemisťujte, dokud hoří nebo nevychladnou.', 'Svíčky zhasněte, než dohoří poslední 2 cm vosku.', 'Nepoužívejte ve vánočním průvanu.'].map(t => '<li>' + t + '</li>').join('') +
+  '</ul><p><strong>Obsahuje drobné části, uchovávejte mimo dosah dětí.</strong></p>' +
+  '<p class="pm-maker"><strong>Výrobce:</strong> Lucie Baierová (Květy Lu), Sedláčkova 434, Pardubice, kvetylu@centrum.cz, kvetylu.cz</p></div>';
 /* =====================================================================
    Květy Lu – sdílený skript
    karty produktů · detail produktu · poptávka (košík) · filtry · menu
@@ -313,6 +318,7 @@ function openModal(id) {
       (p.tags && p.tags.length ? '<div class="ptags">' + p.tags.map(t => '<a href="kategorie.html?k=vse&stitek=' + encodeURIComponent(t) + '">' + esc(t) + '</a>').join('') + '</div>' : '') +
       '<p class="pm-note">Fotografie jsou vzorové. Většina výrobků je originál, proto rozmístění drobných detailů i domečků nemusí přesně odpovídat.</p>' +
       (p.long ? '<p class="plong">' + esc(p.long) + '</p>' : '') +
+      (CANDLE_IDS.indexOf(p.id) >= 0 ? CANDLE_WARN : '') +
       (specs.length ? '<dl class="specs">' + specs.join('') + '</dl>' : '') +
       (hasVar ? '<label class="pm-label" for="pmVar">Varianta</label><select id="pmVar">' + p.variants.map(v => '<option>' + esc(v) + '</option>').join('') + '</select>' : '') +
       '<label class="pm-label" for="pmQty">Počet kusů</label>' +
@@ -497,6 +503,7 @@ function initCategory() {
   }
   document.title = cat.name + ' — Květy Lu';
   const md = document.querySelector('meta[name="description"]'); if (md) md.content = cat.intro;
+  { const u = 'https://kvetylu.cz/kategorie.html?k=' + cat.slug; const cn = document.querySelector('link[rel="canonical"]'); if (cn) cn.href = u; const ou = document.querySelector('meta[property="og:url"]'); if (ou) ou.content = u; const ot = document.querySelector('meta[property="og:title"]'); if (ot) ot.content = document.title; const od = document.querySelector('meta[property="og:description"]'); if (od) od.content = cat.intro; }
   $$('.cat-switch a').forEach(a => { if (a.dataset.slug === cat.slug) { a.classList.add('active'); a.setAttribute('aria-current', 'page'); } });
 
   head.innerHTML = '<nav class="crumbs" aria-label="Drobečková navigace"><a href="' + KL.HOME + '">Domů</a><span aria-hidden="true">›</span><a href="' + KL.HOME + '#kategorie">Kolekce</a><span aria-hidden="true">›</span><span>' + esc(cat.name) + '</span></nav>' +
