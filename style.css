@@ -300,7 +300,7 @@
   footer{
     position: relative;
     background: var(--cream-deep);
-    background-image: url('assets/footer-banner.webp');
+    background-image: url('assets/footer-banner.png');
     background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;
