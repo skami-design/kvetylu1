@@ -1,6 +1,6 @@
 // Vercel funkce: přijme poptávku z webu a pošle ji e-mailem přes Gmail (SMTP, heslo aplikace).
 // Přihlašovací údaje jsou jen v nastavení Vercelu (Environment Variables), nikdy ne v kódu webu:
-//   GMAIL_EMAIL         = kvetulu@gmail.com
+//   GMAIL_EMAIL         = kvetylu@gmail.com
 //   GMAIL_APP_PASSWORD  = 16znakové heslo aplikace z Google účtu
 const nodemailer = require('nodemailer');
 

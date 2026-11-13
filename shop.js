@@ -2,7 +2,7 @@ const CANDLE_IDS = [4, 13, 16, 17];
 const CANDLE_WARN = '<div class="pm-warn"><strong>⚠ Varování: hořící svíčky</strong><ul>' +
   ['Nenechávejte hořící svíčky bez dozoru.', 'Udržujte mimo dosah dětí a domácích zvířat.', 'Udržujte mimo hořlavé materiály. Dekorace obsahuje dřevo, umělý sníh a drobné ozdoby.', 'Svíčky umístěte na stabilní, nehořlavý podklad.', 'Svíčky nepřemisťujte, dokud hoří nebo nevychladnou.', 'Svíčky zhasněte, než dohoří poslední 2 cm vosku.', 'Nepoužívejte ve vánočním průvanu.'].map(t => '<li>' + t + '</li>').join('') +
   '</ul><p><strong>Obsahuje drobné části, uchovávejte mimo dosah dětí.</strong></p>' +
-  '<p class="pm-maker"><strong>Výrobce:</strong> Lucie Baierová (Květy Lu), Sedláčkova 434, Pardubice, kvetulu@gmail.com, kvetylu.cz</p></div>';
+  '<p class="pm-maker"><strong>Výrobce:</strong> Lucie Baierová (Květy Lu), Sedláčkova 434, Pardubice, kvetylu@gmail.com, kvetylu.cz</p></div>';
 /* =====================================================================
    Květy Lu – sdílený skript
    karty produktů · detail produktu · poptávka (košík) · filtry · menu
@@ -11,7 +11,7 @@ const CANDLE_WARN = '<div class="pm-warn"><strong>⚠ Varování: hořící sví
 
 const KL = {
   HOME: "index.html",
-  EMAIL: 'kvetulu@gmail.com',
+  EMAIL: 'kvetylu@gmail.com',
   // Adresa serverové funkce, která odešle poptávku e-mailem (Vercel funkce).
   // Dokud je null, poptávka se otevře jako předvyplněný e-mail.
   ENDPOINT: '/api/odeslat',
@@ -85,7 +85,7 @@ const prodById  = id => (typeof PRODUKTY !== 'undefined' ? PRODUKTY : []).find(p
 const photoUrl  = (p, i) => KL.PHOTO_DIR + p.id + '-' + i + '.jpg';
 // malý náhled první fotky (karty, košík); když neexistuje, spadne na plnou fotku
 const thumbUrl  = (p) => KL.PHOTO_DIR + p.id + '-1-s.jpg';
-const thumbImg = (p, alt, extra) => '<img src="' + thumbUrl(p) + '" alt="' + alt + '"' + (extra || '') + ' onerror="if(!this.dataset.f){this.dataset.f=1;this.src=\'' + photoUrl(p, 1) + '\'}else{this.remove()}">';
+const thumbImg = (p, alt, extra) => '<img src="' + thumbUrl(p) + '" alt="' + alt + '"' + (extra || '') + ' onload="kfFit(this)" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=\'' + photoUrl(p, 1) + '\'}else{this.remove()}">';
 const priceText = p => (p.price ? (p.from ? 'od ' : '') + Number(p.price).toLocaleString('cs-CZ') + ' Kč' : null);
 const plural    = (n, a, b, c) => n === 1 ? a : (n >= 2 && n <= 4 ? b : c);
 
@@ -237,6 +237,13 @@ $('#sendInquiry').addEventListener('click', () => {
 document.addEventListener('click', e => { if (e.target.id === 'resultClose') { resetResult(); closeCart(); } });
 
 /* ---------------------------------------------------------------- Karty */
+// Foto, jejichž poměr stran se hodně liší od karty (4:5), se v kartě zobrazí celé na rozmazaném pozadí
+function kfFit(img) {
+  const box = img.parentNode;
+  if (!box || !box.classList || !box.classList.contains('pphoto') || !img.naturalWidth) return;
+  const r = img.naturalWidth / img.naturalHeight;
+  if (r < 0.7 || r > 0.95) { box.classList.add('fit'); box.style.setProperty('--bg', 'url("' + img.src + '")'); }
+}
 function photoHTML(p, big) {
   const c = catByName(p.cat);
   const g = c ? c.g : 'g1';
@@ -473,7 +480,7 @@ function initHome() {
   if (tl) {
     const ts = allTags().filter(x => ['Vánoce', 'Zima', 'Podzim', 'Jaro', 'Velikonoce', 'Celoroční', 'Provence', 'Limitovaná edice', 'Na přání', 'Vhodné jako dárek'].indexOf(x) >= 0);
     if (ts.length) {
-      tl.innerHTML = '<h3>Nebo si vyberte podle období a stylu</h3><div class="chips">' + ts.map(x => '<a class="filter-btn" href="kategorie.html?k=vse&stitek=' + encodeURIComponent(x) + '">' + esc(x) + '</a>').join('') + '</div>';
+      tl.innerHTML = '<h3>Vyberte si podle období a stylu</h3><div class="chips">' + ts.map(x => '<a class="filter-btn" href="kategorie.html?k=vse&stitek=' + encodeURIComponent(x) + '">' + esc(x) + '</a>').join('') + '</div>';
       tl.hidden = false;
     }
   }
