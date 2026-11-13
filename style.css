@@ -300,7 +300,7 @@
   footer{
     position: relative;
     background: var(--cream-deep);
-    background-image: url('assets/footer-banner.png');
+    background-image: url('assets/footer-banner.webp');
     background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;
@@ -760,6 +760,10 @@
 .cat-tile.g-all{ background: var(--sage-deep); color:#fff; border-color:transparent; }.cat-tile.g-all h3,.cat-tile.g-all p,.cat-tile.g-all .tile-go{ color:#fff; }
 
 /* Užší karty produktů: víc kusů vedle sebe */
+.pphoto,.pphoto.big{ aspect-ratio:4/5; }
+.pcard{ border-radius:6px; }
+.pcard-open,.pphoto,.pphoto img{ border-radius:6px 6px 0 0; }
+.pm .pphoto,.pm .pphoto.big{ aspect-ratio:1/1.05; }
 .pgrid{ grid-template-columns: repeat(5, 1fr); gap:16px; }
 @media (max-width:1180px){ .pgrid{ grid-template-columns: repeat(4, 1fr); } }
 @media (max-width:900px){ .pgrid{ grid-template-columns: repeat(3, 1fr); } }

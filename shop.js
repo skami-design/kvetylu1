@@ -2,7 +2,7 @@ const CANDLE_IDS = [4, 13, 16, 17];
 const CANDLE_WARN = '<div class="pm-warn"><strong>⚠ Varování: hořící svíčky</strong><ul>' +
   ['Nenechávejte hořící svíčky bez dozoru.', 'Udržujte mimo dosah dětí a domácích zvířat.', 'Udržujte mimo hořlavé materiály. Dekorace obsahuje dřevo, umělý sníh a drobné ozdoby.', 'Svíčky umístěte na stabilní, nehořlavý podklad.', 'Svíčky nepřemisťujte, dokud hoří nebo nevychladnou.', 'Svíčky zhasněte, než dohoří poslední 2 cm vosku.', 'Nepoužívejte ve vánočním průvanu.'].map(t => '<li>' + t + '</li>').join('') +
   '</ul><p><strong>Obsahuje drobné části, uchovávejte mimo dosah dětí.</strong></p>' +
-  '<p class="pm-maker"><strong>Výrobce:</strong> Lucie Baierová (Květy Lu), Sedláčkova 434, Pardubice, kvetylu@centrum.cz, kvetylu.cz</p></div>';
+  '<p class="pm-maker"><strong>Výrobce:</strong> Lucie Baierová (Květy Lu), Sedláčkova 434, Pardubice, kvetulu@gmail.com, kvetylu.cz</p></div>';
 /* =====================================================================
    Květy Lu – sdílený skript
    karty produktů · detail produktu · poptávka (košík) · filtry · menu
@@ -11,10 +11,10 @@ const CANDLE_WARN = '<div class="pm-warn"><strong>⚠ Varování: hořící sví
 
 const KL = {
   HOME: "index.html",
-  EMAIL: 'kvetylu@centrum.cz',
+  EMAIL: 'kvetulu@gmail.com',
   // Adresa serverové funkce, která odešle poptávku e-mailem (Vercel funkce).
   // Dokud je null, poptávka se otevře jako předvyplněný e-mail.
-  ENDPOINT: null,
+  ENDPOINT: '/api/odeslat',
   // Zimní sněžení na pozadí: true = zapnuto, false = vypnuto (na jaro).
   SNEH: true,
   PHOTO_DIR: 'assets/produkty/',
@@ -83,6 +83,9 @@ const allTags = () => { const r = []; PRODUKTY.forEach(p => (p.tags || []).forEa
 const catByName = n => KL.CATS.find(c => c.name === n);
 const prodById  = id => (typeof PRODUKTY !== 'undefined' ? PRODUKTY : []).find(p => String(p.id) === String(id));
 const photoUrl  = (p, i) => KL.PHOTO_DIR + p.id + '-' + i + '.jpg';
+// malý náhled první fotky (karty, košík); když neexistuje, spadne na plnou fotku
+const thumbUrl  = (p) => KL.PHOTO_DIR + p.id + '-1-s.jpg';
+const thumbImg = (p, alt, extra) => '<img src="' + thumbUrl(p) + '" alt="' + alt + '"' + (extra || '') + ' onerror="if(!this.dataset.f){this.dataset.f=1;this.src=\'' + photoUrl(p, 1) + '\'}else{this.remove()}">';
 const priceText = p => (p.price ? (p.from ? 'od ' : '') + Number(p.price).toLocaleString('cs-CZ') + ' Kč' : null);
 const plural    = (n, a, b, c) => n === 1 ? a : (n >= 2 && n <= 4 ? b : c);
 
@@ -126,7 +129,7 @@ function thumbHTML(p) {
   const c = catByName(p.cat);
   const g = c ? c.g : 'g1';
   return '<div class="ci-thumb ' + g + '">' +
-    (p.photos > 0 ? '<img src="' + photoUrl(p, 1) + '" alt="" onerror="this.remove()">' : '') + '</div>';
+    (p.photos > 0 ? thumbImg(p, '') : '') + '</div>';
 }
 
 function renderCart() {
@@ -216,11 +219,12 @@ $('#sendInquiry').addEventListener('click', () => {
 
   if (KL.ENDPOINT) {
     const btn = $('#sendInquiry'); btn.disabled = true; btn.firstChild.textContent = 'Odesílám… ';
-    fetch(KL.ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ jmeno: jmeno, email: email, zprava: zprava, text: text }) })
-      .then(r => { if (!r.ok) throw new Error('chyba'); })
+    const mailto = () => { window.location.href = 'mailto:' + KL.EMAIL + '?subject=' + encodeURIComponent('Poptávka z webu Květy Lu') + '&body=' + encodeURIComponent(text); };
+    fetch(KL.ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ jmeno: jmeno, email: email, zprava: zprava, text: text, web: '' }) })
+      .then(r => r.json().then(j => { if (!r.ok || !j.ok) throw new Error('chyba'); }))
       .then(() => { done(); showResult('<h3>Děkuji za poptávku, ' + esc(jmeno) + '!</h3><p>Ozvu se vám co nejdřív na ' + esc(email) + '.</p><button type="button" class="btn btn-primary" id="resultClose">Zavřít</button>'); })
-      .catch(() => { btn.disabled = false; btn.firstChild.textContent = 'Odeslat poptávku '; alert('Poptávku se nepodařilo odeslat. Zkuste to prosím znovu, nebo napište na ' + KL.EMAIL + '.'); });
+      .catch(() => { btn.disabled = false; btn.firstChild.textContent = 'Odeslat poptávku '; done(); showResult('<h3>Poptávka je připravená</h3><p>Odeslání přes web se nepovedlo, proto se otevře e-mail s hotovou zprávou – stačí ho odeslat. Kdyby se neotevřel, napište mi prosím na <a href="mailto:' + KL.EMAIL + '">' + KL.EMAIL + '</a>.</p><button type="button" class="btn btn-primary" id="resultClose">Zavřít</button>'); mailto(); });
   } else {
     const href = 'mailto:' + KL.EMAIL + '?subject=' + encodeURIComponent('Poptávka z webu Květy Lu') + '&body=' + encodeURIComponent(text);
     done();
@@ -237,7 +241,7 @@ function photoHTML(p, big) {
   const c = catByName(p.cat);
   const g = c ? c.g : 'g1';
   let html = '<div class="pphoto ' + g + (big ? ' big' : '') + '"><span class="pph-label">FOTO</span>';
-  if (p.photos > 0) html += '<img src="' + photoUrl(p, 1) + '" alt="' + esc(p.name) + '" loading="lazy" onerror="this.remove()">';
+  if (p.photos > 0) html += big ? '<img src="' + photoUrl(p, 1) + '" alt="' + esc(p.name) + '" loading="lazy" onerror="this.remove()">' : thumbImg(p, esc(p.name), ' loading="lazy" decoding="async"');
   return html + '</div>';
 }
 
