@@ -809,6 +809,9 @@
 .usp{ margin-top:0; }
 .usp{ padding:18px 0 20px; }
 .categories{ padding-top:28px; }
+.cat-tile.has-img{ transition: transform .25s ease; }
+.cat-tile.has-img:hover{ transform: translateY(-6px) scale(1.04); }
+.cat-tile.has-img:hover .tile-img{ filter: brightness(.78) saturate(1.15) drop-shadow(0 14px 22px rgba(54,57,50,.38)); }
 .usp-row{ gap:10px; }
 .usp-item{ gap:4px; }
 .usp-item img{ width:64px; height:64px; }
