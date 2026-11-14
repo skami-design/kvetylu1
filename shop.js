@@ -520,7 +520,7 @@ function initCategory() {
   head.innerHTML = '<nav class="crumbs" aria-label="Drobečková navigace"><a href="' + KL.HOME + '">Domů</a><span aria-hidden="true">›</span><a href="' + KL.HOME + '#kategorie">Kolekce</a><span aria-hidden="true">›</span><span>' + esc(cat.name) + '</span></nav>' +
     '<h1>' + esc(cat.name) + '</h1><p class="page-intro">' + esc(cat.intro) + '</p>';
 
-  const items = slug === 'vse' ? PRODUKTY.slice() : PRODUKTY.filter(p => cat.tag ? (p.tags || []).indexOf(cat.tag) >= 0 : p.cat === cat.name);
+  const items = slug === 'vse' ? PRODUKTY.slice() : PRODUKTY.filter(p => cat.tag ? (p.tags || []).indexOf(cat.tag) >= 0 : (p.cat === cat.name || (p.cats || []).indexOf(cat.name) >= 0));
   const tags = []; items.forEach(p => (p.tags || []).forEach(t => { if (tags.indexOf(t) < 0) tags.push(t); }));
   if (slug === 'vse') { const s = sortTags(tags); tags.length = 0; s.forEach(x => tags.push(x)); }
   const startTag = new URLSearchParams(location.search).get('stitek');
